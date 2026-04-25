@@ -178,9 +178,71 @@ Extract-Commit 11
 DefCommit-Blue 11
 Check-Logs
 
-#========== Commit 11 ==========
-git checkout -b line8
+#========== Commit 12 ==========
 Clear-Repo
-Extract-Commit 11
-DefCommit-Blue 11
+Extract-Commit 12
+DefCommit-Blue 12
+Check-Logs
+
+#========== Commit 13 ==========
+git checkout -b line9
+Clear-Repo
+Extract-Commit 13
+DefCommit-Blue 13
+Check-Logs
+
+#========== Commit 14 ==========
+git checkout line2
+Clear-Repo
+Extract-Commit 14
+DefCommit-Blue 14
+Check-Logs
+
+#========== Commit 15 ==========
+git checkout line8
+Clear-Repo
+Extract-Commit 15
+DefCommit-Blue 15
+Check-Logs
+
+#========== Commit 16 ==========
+git checkout line7
+Clear-Repo
+Extract-Commit 16
+DefCommit-Red 16
+Check-Logs
+
+#========== Commit 17 ==========
+# Первый мердж. Делаем
+git checkout line3
+# Пока просто готовим мердж, поэтому --no-commit (у нас же есть commit17.zip все таки). 
+# выбрал --strategy=ours чтобы наверняка избежать конфликтов. Один фиг из commit17.zip закинем новые данные
+git merge line7 --no-commit --strategy=ours
+Clear-Repo
+Extract-Commit 17
+DefCommit-Red 17
+Check-Logs
+#Для проверки смотрю еще хэши родителей (по сути должно быть два хэша от r9 и r16, так оно и есть). Просто перестраховался навсяк
+# -n 5 написал чтобы не видеть эту гигантскую страхолюдную историю всех коммитов) 
+git log --pretty=format:"%h | parents:%p | %D | %an | %s" --all --graph -n 5
+
+#========== Commit 18 ==========
+git checkout line1
+Clear-Repo
+Extract-Commit 18
+DefCommit-Red 18
+Check-Logs
+
+#========== Commit 19 ==========
+git checkout line4
+Clear-Repo
+Extract-Commit 19
+DefCommit-Blue 19
+Check-Logs
+
+#========== Commit 20 ==========
+git checkout line6
+Clear-Repo
+Extract-Commit 20
+DefCommit-Red 20
 Check-Logs
